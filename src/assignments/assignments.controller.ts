@@ -10,4 +10,13 @@ export class AssignmentsController {
     }
     return { sequence: fib.slice(0, n) };
   }
+
+  @Get('prime/:number')
+checkPrime(@Param('number') number: number) {
+  if (number <= 1) return { isPrime: false };
+  for (let i = 2; i <= Math.sqrt(number); i++) {
+    if (number % i === 0) return { isPrime: false };
+  }
+  return { isPrime: true };
+}
 }
